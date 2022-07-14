@@ -70,11 +70,16 @@ const reducer = (state = initialState, action) => {
 
         case FILTER_GENRE:
             const allVideogame = state.copy;
-            // console.log(allVideogame)
+
+            const iterar = (gen) => {
+                for (const i of gen.genres) {
+                    if (i.name.toLowerCase()?.includes(action.payload.toLowerCase())) return gen;
+                }
+            }
+
             const all = action.payload === "All"
                 ? allVideogame
-                : allVideogame.filter((r) => r.genre?.includes(action.payload))
-            //  console.log(all)
+                : allVideogame.filter(r => iterar(r))
 
             return {
                 ...state,
@@ -108,10 +113,10 @@ const reducer = (state = initialState, action) => {
                     if (a.rating > b.rating) return -1
                     return 0
                 })
-
+            // console.log(orderByScore)
             return {
                 ...state,
-                recipe: [...orderByScore]
+                videogame: [...orderByScore]
             }
 
         default:

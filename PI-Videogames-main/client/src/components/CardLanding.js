@@ -1,5 +1,6 @@
 import React from "react";
-import image from '../asset/card-lang.png'
+import { Link } from 'react-router-dom'
+// import { v4 as uuidv4 } from 'uuid';
 
 const CardLanding = ({ menuProducts }) => {
   return (
@@ -8,20 +9,24 @@ const CardLanding = ({ menuProducts }) => {
         {menuProducts.map((currentElem, index) => {
           return (
             <>
-              <div className="card" key={currentElem.id}>
+              <div className="card" >
+                {/* <Link to={`/videogames/${id}`}> */}
                 <div className="card__content">
                   <div className="card-header">
                     {/* <div className="sNo">{index + 1}</div> */}
-                    <h5 className="title">{currentElem.name}</h5>
-                    
+                    <h5 className="title" key={index}>{currentElem.name}</h5>
+
                   </div>
                   <div className="card-body">
                     <div>
-                      <button className="irNow">🡪</button>
+                      <Link to={`/videogames?genname=${currentElem.name}`}>
+                        <button className="irNow">🡪</button>
+                      </Link>
                       {/* <img src={currentElem.img} alt="Rajma" /> */}
                     </div>
                   </div>
                 </div>
+                {/* </Link> */}
               </div>
             </>
           );

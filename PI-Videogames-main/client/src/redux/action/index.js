@@ -71,7 +71,7 @@ export const getGenre = () => {
     }
 }
 
-export const getfilterGenre = (payload) => {
+export const getFilterGenre = (payload) => {
     return {
         type: FILTER_GENRE,
         payload
@@ -85,7 +85,7 @@ export const getFilterAsc = (payload) => {
     }
 }
 
-export const getFilterMax = (payload) => {
+export const getFilterMaxMin = (payload) => {
     return {
         type: FILTER_MIN,
         payload

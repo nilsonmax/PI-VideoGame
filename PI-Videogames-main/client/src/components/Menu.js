@@ -1,20 +1,10 @@
 import React, { useEffect, useState } from "react";
-// import { API } from "./API";
 import "./../asset/css/main.css";
-import CardLanding from "./CardHome";
+import CardLanding from "./CardLanding";
 import { getGenre } from "../redux/action";
 import { useDispatch, useSelector } from 'react-redux'
-
-// const uniqueList = [
-//   ...new Set(
-//     API.map((currElem) => {
-//       return currElem.type;
-//     })
-//   ),
-//   "All",
-// ];
-
-
+import Loading from "./Loading/Loading";
+import NotFound from "./NotFound/NotFound";
 
 const Menu = () => {
   const dispatch = useDispatch()
@@ -35,12 +25,11 @@ const Menu = () => {
     "All",
   ];
 
-  let [menuProducts, setMenuProducts] = useState(Genre);
+  // console.log(Genre)
+
   let [menuMostrar, setMenuMostrar] = useState("");
-  let [activeTab, setactiveTab] = useState("");
-
-
-  // console.log(uniqueList);
+  let [menuProducts, setMenuProducts] = useState(Genre);
+  let [loading, setLoading] = useState(true);
 
   const filterProducts = (type) => {
     let updatedProducts = Genre.filter((currentElem) => {
@@ -49,38 +38,52 @@ const Menu = () => {
     });
 
     setMenuProducts(updatedProducts);
-    
   };
 
+  if (Genre.length > 0 && loading) {
+    setLoading(false)
+    setMenuProducts(Genre)
+  }
   return (
     <>
       <div className="mainContainer">
         <div className="menu">
           <ul>
-            {uniqueList.map(list => {
-              return (
-                <>
-                  <li
-                    onClick={() => {
-                      if (list != 'All') {
-                        filterProducts(list)
+            {
+              uniqueList.map(list => {
+                return (
+                  <>
+                    <li
+                      onClick={() => {
+                        if (list !== 'All') {
+                          filterProducts(list)
                         } else {
-                        setMenuProducts(Genre)
-                        setMenuMostrar("All")
+                          setMenuProducts(Genre)
+                          setMenuMostrar("All")
+                        }
                       }
-                    }
-                      // list != 'All' ? filterProducts(list) : setMenuProducts(API)
-                    }
-                    className={activeTab}>
-                    {list}
-                  </li>
-                </>
-              )
-            })}
+                        // list != 'All' ? filterProducts(list) : setMenuProducts(API)
+                      }
+                    >
+                      {list}
+                    </li>
+                  </>
+                )
+              })
+
+
+            }
           </ul>
         </div>
-        <div className="title-menu"><h2>{menuMostrar}</h2></div>
-        <CardLanding menuProducts={menuProducts} />
+        <div className="title-menu"><h2>{menuMostrar?menuMostrar:"Genre"}</h2></div>
+        {Genre.length > 0 && !loading ? (
+          (<CardLanding menuProducts={menuProducts} />)
+        ) : !Genre.length > 0 && loading ? (
+          <Loading />
+        ) : (
+          <NotFound />
+        )
+        }
       </div>
     </>
   );

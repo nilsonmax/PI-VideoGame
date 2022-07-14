@@ -18,6 +18,7 @@ const getDataApi = async (page = 1, dataRes = []) => {
         return {
             id: r.id,
             name: r.name,
+            image: r.background_image,
             released: r.released,
             rating: r.rating,
             platform: r.parent_platforms.map(p => {
