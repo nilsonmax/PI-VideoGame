@@ -3,6 +3,7 @@
     justify-content: center;
     margin: .5rem;
     position: relative;
+    /* border-bottom: 1px #777 solid; */
     
 }
 
@@ -18,8 +19,8 @@
     cursor: pointer;
     padding: 3px;
     /* margin-top: 1rem; */
-    /* border: none; */
-    /* outline: none; */
+    border: none;
+    outline: none;
 }
 
 .inputButton:hover {

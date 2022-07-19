@@ -56,6 +56,7 @@ const Options = (genre) => {
 
     return (
         <div className={s.firstContainer}>
+        <div className={s.linea}></div>
             <div>
                 <label htmlFor="">Filter By Genre:</label>
                 <select onChange={handleGenre}>

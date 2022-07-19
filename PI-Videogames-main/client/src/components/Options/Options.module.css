@@ -38,10 +38,16 @@ select {
     /* padding: 1rem; */
     /* background: black; */
     /* margin-bottom: 1rem; */
+    
     color:#fff
+    
    
 }
-
+.linea{
+    border-top: 2px #777 solid;
+    width:95%;
+    position: absolute;
+}
 .secondContainer {
     display: flex;
     /* flex-direction: row; */
