@@ -175,13 +175,13 @@ const getAll = async (req, res) => {
             const dataResDb = await dataResDB(name);
 
             if (!dataResDb) {
-                res.send(dataResDb)
+                res.status(200).send(dataResDb)
 
             } else {
 
                 /*****  Search NAME API *****/
                 const dataResApi = await dataResAPI(name);
-                dataResApi ? res.send(dataResApi)
+                dataResApi ? res.status(200).send(dataResApi)
                     : res.send({ msg: "error does not exist" })
             }
 
@@ -189,7 +189,7 @@ const getAll = async (req, res) => {
 
             /*****  Search ALL *****/
             const all = await searchAll();
-            res.send(all)
+            res.status(200).send(all)
         }
 
     } catch (error) {

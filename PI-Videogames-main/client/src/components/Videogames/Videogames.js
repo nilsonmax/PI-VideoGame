@@ -1,17 +1,23 @@
 import React from 'react'
 import Card from '../Card/Card'
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { getFilterGenre, getVideoGame } from '../../redux/action';
+import { useSelector } from 'react-redux';
+// import { useEffect } from 'react';
+// import { getFilterGenre, getVideoGame } from '../../redux/action';
 import s from "./Videogames.module.css"
 import Loading from '../Loading/Loading';
-import NotFound from '../NotFound/NotFound';
+// import NotFound from '../NotFound/NotFound';
 import { useState } from 'react';
 import Options from './../Options/Options';
 import { v4 as uuidv4 } from 'uuid';
 import { useLocation } from 'react-router-dom';
+import NotMaches from '../Notmaches/Notmaches';
+import { Search } from '../Search/Search';
+import Paginacion from '../Paginacion/Paginacion';
+// import { getVideoGame } from '../../redux/action';
+// import { useEffect } from 'react';
 
 export const Videogames = () => {
+
     let { search } = useLocation();
     let query = new URLSearchParams(search)
     // console.log(query, 'aqui1')
@@ -19,6 +25,23 @@ export const Videogames = () => {
     // console.log(genreUrl, 'aui2')
 
     const videogame = useSelector((state) => state.videogame)
+
+    //paginacion
+    const [currentPage, setCurrentPage] = useState(1)
+    const [couPerPage] = useState(9)
+    const indexlast = currentPage * couPerPage; // devuelve 12
+    const indexFirst = indexlast - couPerPage; // 0
+    const allpages = videogame.slice(indexFirst, indexlast)
+    // console.log(indexlast,indexFirst, allpages )
+
+    const paginado = (pageNumber) => {
+        setCurrentPage(pageNumber)
+    }
+
+    // if (allpages.length > 0 && loading) {
+    //     setLoading(false)
+    // }
+
     // const dispatch = useDispatch();
     // useEffect(() => {
     //     if (genreUrl) {
@@ -30,7 +53,7 @@ export const Videogames = () => {
     //     }
     // }, [dispatch]);
 
-    
+
 
     // useEffect(() => {
     //     dispatch(getVideoGame());
@@ -53,18 +76,24 @@ export const Videogames = () => {
     //     dispatch(getVideoGame())
     // }, [dispatch])
 
-    if (videogame.length > 0 && loading) {
+    if (allpages.length > 0 && loading) {
         setLoading(false)
     }
 
     return (
         <>
-        {genreUrl?<Options genre={genreUrl}/>:<Options />}
-            
+            <div className={s.menuOptions}>
+                {<Search />}
+
+                {genreUrl ? <Options genre={genreUrl} /> : <Options />}
+            </div>
+            <Paginacion videogame={videogame.length}
+                couPerPage={couPerPage}
+                paginado={paginado} />
             {
-                videogame.length > 0 && !loading ? (
+                allpages.length > 0 && !loading ? (
                     <div className={s.flex}>{
-                        videogame?.map((r) => {
+                        allpages?.map((r) => {
                             return (
                                 <Card
                                     key={r.id + uuidv4()}
@@ -78,12 +107,16 @@ export const Videogames = () => {
                             )
                         })}
                     </div>
-                ) : !videogame.length > 0 && loading ? (
+
+                ) : !allpages.length > 0 && loading ? (
                     <Loading />
                 ) : (
-                    <NotFound />
+                    <NotMaches />
                 )
             }
+            <Paginacion videogame={videogame.length}
+                couPerPage={couPerPage}
+                paginado={paginado} />
         </>
     )
 

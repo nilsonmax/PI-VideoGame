@@ -33,6 +33,12 @@ div .flex {
 
 }
 
+.menuOptions{
+background-color: rgb(58, 59, 61);
+margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+ }
 .genre {
     display: inline;
 } 

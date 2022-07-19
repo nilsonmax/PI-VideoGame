@@ -1,7 +1,6 @@
 import {
     GET_VIDEOGAMES,
     GET_BY_NAME_VIDEOGAMES,
-    GET_ID_VIDEOGAMES,
     GET_DETAILS_VIDEOGAMES,
     GET_GENRE,
     FILTER_GENRE,
@@ -14,7 +13,7 @@ import {
 const initialState = {
     videogame: [],
     copy: [],
-    details: {},
+    detail: {},
     genre: [],
 }
 
@@ -28,15 +27,10 @@ const reducer = (state = initialState, action) => {
             }
 
         case GET_DETAILS_VIDEOGAMES:
+            console.log(action.payload, ' id payload')
             return {
                 ...state,
-                details: action.payload[0]
-            }
-
-        case GET_ID_VIDEOGAMES:
-            return {
-                ...state,
-                videogame: action.payload,
+                detail: action.payload
             }
 
         case GET_BY_NAME_VIDEOGAMES:
@@ -51,6 +45,7 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 videogame: action.payload,
             }
+            
         case FILTER_CREAD:
             // console.log(action.payload)
             const creatorFilter = action.payload === "createdInDb"

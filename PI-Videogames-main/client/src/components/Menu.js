@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./../asset/css/main.css";
 import CardLanding from "./CardLanding";
-import { getGenre } from "../redux/action";
+import { getGenre} from "../redux/action";
 import { useDispatch, useSelector } from 'react-redux'
 import Loading from "./Loading/Loading";
 import NotFound from "./NotFound/NotFound";
@@ -12,6 +12,13 @@ const Menu = () => {
   useEffect(() => {
     dispatch(getGenre())
   }, [dispatch])
+
+  // const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //     dispatch(getVideoGame());
+  // }, [dispatch]);
+
 
   const Genre = useSelector((state) => state.genre)
 

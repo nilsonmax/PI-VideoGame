@@ -1,5 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import { ContactContainer } from './components/Contactcontainer';
+import Create from './components/Create/Create';
+import { Details } from './components/Details/Details';
 import Footer from './components/Footer/Footer';
 import { Header } from './components/Header';
 import { Home } from './components/Home/Home';
@@ -16,8 +19,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/videogames" element={<Videogames />} />
-        {/* <Route path="/recipe/:id" element={<RecipesDetail/>} />
-      <Route path= "/recipe/create" element={<Create/>}/> */}
+        <Route path="/videogames/:id" element={<Details />} />
+        <Route path="/videogames/create" element={<Create />} />
+        <Route path="/videogames/contact" element={<ContactContainer />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

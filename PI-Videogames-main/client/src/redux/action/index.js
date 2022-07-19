@@ -2,7 +2,6 @@ import axios from 'axios';
 
 export const GET_VIDEOGAMES = "GET_VIDEOGAMES";
 export const GET_BY_NAME_VIDEOGAMES = "GET_BY_NAME_VIDEOGAMES";
-export const GET_ID_VIDEOGAMES = "GET_ID_VIDEOGAMES";
 export const GET_DETAILS_VIDEOGAMES = "GET_DETAILS_VIDEOGAMES";
 export const GET_GENRE = "GET_GENRE";
 export const FILTER_GENRE = "GET_FILTER_GENRE";
@@ -31,11 +30,12 @@ export const getVideoGame = () => {
 export const getIdVideoGame = (id) => {
     return async (dispatch) => {
         try {
-
-            const resp = await axios.get(`http://localhost:3001/videogames/:${id}`)
+            console.log(id, 'id resp data')
+            const resp = await axios.get(`http://localhost:3001/videogames/${id}`)
+            console.log(resp.data, ' resp data')
             return dispatch({
-                type: GET_ID_VIDEOGAMES,
-                payload: resp.data
+                type: GET_DETAILS_VIDEOGAMES,
+                payload: resp.data,
             })
 
         } catch (error) {
@@ -96,5 +96,20 @@ export const getFilterCreate = (payload) => {
     return {
         type: FILTER_CREAD,
         payload
+    }
+}
+
+export const postCreate = async (payload) => {
+    try {
+        
+        const json = await axios.post(
+            "http://localhost:3001/videogames/create",
+            payload
+        )
+        return json
+
+    } catch (error) {
+        console.log(error)
+
     }
 }

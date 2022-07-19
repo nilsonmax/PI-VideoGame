@@ -1,0 +1,24 @@
+.nave ul{
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    position: relative;
+}
+
+.nave{
+    padding: 1rem;
+}
+.nave  span{
+    color: rgb(5, 5, 5);
+    padding: 7px;
+    background: rgb(255, 255, 255);
+    margin: 2px;
+    font-weight: 600;
+    border:1px solid rgb(3, 3, 3);
+    cursor: pointer;
+}
+
+.nave span:hover{
+    color: white;
+    background-color: rgb(7, 7, 7);
+}

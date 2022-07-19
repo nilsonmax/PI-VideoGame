@@ -7,15 +7,15 @@ export const ContactContainer = () => {
                     <span>Contact us and we will get back to you within 24 hours.</span>
                     <span>
                         <i className="fas fa-map-marker-alt"></i>
-                        Kampala Uganda
+                        Colombia Medellin
                     </span>
                     <span>
                         <i className="fas fa-mobile-alt"></i>
-                        +256 778 800 900
+                        +57 893 52 12
                     </span>
                     <span>
                         <i className="far fa-envelope"></i>
-                        company.gmail.com
+                        programasjuegosmax@gmail.com
                     </span>
                 </div>
                     

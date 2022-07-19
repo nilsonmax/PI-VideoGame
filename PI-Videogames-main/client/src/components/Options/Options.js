@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux';
 import { getFilterAsc, getFilterCreate, getFilterGenre, getFilterMaxMin, getVideoGame } from '../../redux/action';
 import { useEffect } from 'react';
+import s from './Options.module.css'
 
 // const Options = ({ set }) => {
 const Options = (genre) => {
@@ -11,17 +12,23 @@ const Options = (genre) => {
     //     dispatch(getVideoGame());
     // }, [dispatch]);
 
-    useEffect(() => {
-        if (Object.entries(genre).length === 0) {
+       useEffect(() => {
+       if (Object.entries(genre).length === 0) {
             console.log(genre,'en genreUrl 1')
             dispatch(getVideoGame());
         }else {
-            const v=Object.values(genre).toString()
+            // dispatch(getVideoGame());
+            // const v=Object.values(genre).toString()
             console.log(genre,Object.values(genre).toString(),'en genreUrl 2')
-            console.log(v)
-            dispatch(getFilterGenre(v));
+            // console.log(v, 'ulr 3')
+            dispatch(getFilterGenre(Object.values(genre).toString()));
         }
     }, [dispatch]);
+
+    //  else {
+    //     console.log(v,'en genreUrl 2')
+    //     dispatch(getVideoGame());
+    // }
 
     const handleGenre = (e) => {
         e.preventDefault()
@@ -48,7 +55,7 @@ const Options = (genre) => {
     }
 
     return (
-        <div>
+        <div className={s.firstContainer}>
             <div>
                 <label htmlFor="">Filter By Genre:</label>
                 <select onChange={handleGenre}>

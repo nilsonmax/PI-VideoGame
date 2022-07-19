@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button } from './Button';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
-import Dropdown from './Dropdown';
+// import Dropdown from './Dropdown';
 
 
 export const Navbar = () => {
@@ -60,7 +60,7 @@ export const Navbar = () => {
           </li>
           <li className='nav-item'>
             <Link
-              to='/create'
+              to='/videogames/create'
               className='nav-links'
               onClick={closeMobileMenu}
             >
@@ -69,7 +69,7 @@ export const Navbar = () => {
           </li>
           <li className='nav-item'>
             <Link
-              to='/contact-us'
+              to='/videogames/contact'
               className='nav-links'
               onClick={closeMobileMenu}
             >
