@@ -99,17 +99,25 @@ export const getFilterCreate = (payload) => {
     }
 }
 
-export const postCreate = async (payload) => {
-    try {
-        
-        const json = await axios.post(
-            "http://localhost:3001/videogames/create",
-            payload
-        )
-        return json
+export const postCreate = (payload) => {
 
-    } catch (error) {
-        console.log(error)
+    return async (dispatch) => {
+        try {
 
+            const json = await axios.post(
+                "http://localhost:3001/videogames/create",
+                payload
+            )
+            // console.log(payload, 'payload', json, 'json')
+            return dispatch({
+                type: POST_CREATE,
+                payload: payload
+            })
+
+        } catch (error) {
+            console.log(error)
+
+        }
     }
+
 }

@@ -1,7 +1,7 @@
 const axios = require('axios');
 const { Videogame, Genre } = require('../db');
 const { Op } = require("sequelize");
-const { getDataGenre } = require('./Genre');
+const { getDataApiGenre } = require('./Genre');
 
 
 const { API_KEY } = process.env;
@@ -161,7 +161,7 @@ const searchAll = async () => {
 
     /*****  Search ALL API *****/
     const api = await getDataApi();
- 
+
     const all = [...api, ...db]
     return all;
 }
@@ -198,25 +198,24 @@ const getAll = async (req, res) => {
 }
 
 const postCreate = async (req, res) => {
+
+    const { name, image, genres, description, released, rating, platforms } = req.body;
     try {
-        const { name, image, genres, description, released, rating, platforms } = req.body;
 
         const newData = await Videogame.create({
             name,
             image,
-            genres,
             description,
             released,
             rating,
-            platforms
+            platforms,
+            genres
         })
-
-        await getDataGenre();
+        await getDataApiGenre()
         const getGenre = await Genre.findAll({
             where: { name: genres }
         })
         await newData.addGenre(getGenre)
-
         return res.status(200).send({ msg: "successfully created" })
 
     } catch (error) {

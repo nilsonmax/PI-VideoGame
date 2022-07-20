@@ -24,15 +24,16 @@ export const Videogames = () => {
     let genreUrl = query.get('genname')
     // console.log(genreUrl, 'aui2')
 
-    const videogame = useSelector((state) => state.videogame)
-
+    const videogames = useSelector((state) => state.videogame)
+ console.log(videogames, 'videogames')
     //paginacion
     const [currentPage, setCurrentPage] = useState(1)
     const [couPerPage] = useState(9)
     const indexlast = currentPage * couPerPage; // devuelve 12
     const indexFirst = indexlast - couPerPage; // 0
-    const allpages = videogame.slice(indexFirst, indexlast)
-    // console.log(indexlast,indexFirst, allpages )
+    const allpages = videogames.slice(indexFirst, indexlast)
+   
+    console.log(indexlast, 'last', indexFirst, 'first', allpages , 'allpages')
 
     const paginado = (pageNumber) => {
         setCurrentPage(pageNumber)
@@ -85,9 +86,10 @@ export const Videogames = () => {
             <div className={s.menuOptions}>
                 {<Search />}
 
-                {genreUrl ? <Options genre={genreUrl} /> : <Options />}
+                {  genreUrl ? <Options genre={genreUrl} set={setCurrentPage} /> : <Options  />} 
+                 
             </div>
-            <Paginacion videogame={videogame.length}
+            <Paginacion videogame={videogames.length}
                 couPerPage={couPerPage}
                 paginado={paginado} />
             {
@@ -102,6 +104,7 @@ export const Videogames = () => {
                                     image={r.image}
                                     // genres={r.createdInDb ? r.genres.map(r => <p className={s.genre} >{r.name} {console.log('aquiname',r.name)}</p>) : r.genres}
                                     genres={r.genres.map(r => <p className={s.genre} >{r.name}</p>)}
+                                    // genres={r.genres}
                                     rating={r.rating}
                                 />
                             )
@@ -114,7 +117,7 @@ export const Videogames = () => {
                     <NotMaches />
                 )
             }
-            <Paginacion videogame={videogame.length}
+            <Paginacion videogame={videogames.length}
                 couPerPage={couPerPage}
                 paginado={paginado} />
         </>

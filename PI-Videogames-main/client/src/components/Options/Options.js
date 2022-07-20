@@ -1,29 +1,31 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { useDispatch } from 'react-redux';
 import { getFilterAsc, getFilterCreate, getFilterGenre, getFilterMaxMin, getVideoGame } from '../../redux/action';
 import { useEffect } from 'react';
 import s from './Options.module.css'
 
 // const Options = ({ set }) => {
-const Options = (genre) => {
+const Options = (genre, {set}) => {
     const dispatch = useDispatch();
-
+console.log(genre, 'genre', set, 'set')
     // useEffect(() => {
     //     dispatch(getVideoGame());
     // }, [dispatch]);
+    const obj = useMemo(() => {
+        return genre;
+      }, []);
 
        useEffect(() => {
-       if (Object.entries(genre).length === 0) {
-            console.log(genre,'en genreUrl 1')
+       if (Object.entries(obj).length === 0) {
+            console.log(obj,'en genreUrl 1',set, 'set')
             dispatch(getVideoGame());
         }else {
             // dispatch(getVideoGame());
-            // const v=Object.values(genre).toString()
-            console.log(genre,Object.values(genre).toString(),'en genreUrl 2')
-            // console.log(v, 'ulr 3')
-            dispatch(getFilterGenre(Object.values(genre).toString()));
+            console.log(obj.genre,'en genreUrl 2', set, 'set')
+              // console.log(v, 'ulr 3')
+            dispatch(getFilterGenre(obj.genre));
         }
-    }, [dispatch]);
+    }, [dispatch, obj.genre]);
 
     //  else {
     //     console.log(v,'en genreUrl 2')
@@ -33,25 +35,25 @@ const Options = (genre) => {
     const handleGenre = (e) => {
         e.preventDefault()
         dispatch(getFilterGenre(e.target.value))
-        // set(1)
+        set(1)
     }
 
     const handleByAZ = (e) => {
         e.preventDefault()
         dispatch(getFilterAsc(e.target.value))
-        // set(1)
+        set(1)
     }
 
     const handleRating = (e) => {
         e.preventDefault()
         dispatch(getFilterMaxMin(e.target.value))
-        // set(1)
+        set(1)
     }
 
     const handleCreate = (e) => {
         e.preventDefault()
         dispatch(getFilterCreate(e.target.value))
-        //    set(1)
+           set(1)
     }
 
     return (

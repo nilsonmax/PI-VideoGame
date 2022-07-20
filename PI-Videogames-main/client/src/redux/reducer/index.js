@@ -36,16 +36,16 @@ const reducer = (state = initialState, action) => {
         case GET_BY_NAME_VIDEOGAMES:
             return {
                 ...state,
-                videogame: action.payload,
+                videogame: action.payload
             }
 
 
         case POST_CREATE:
             return {
                 ...state,
-                videogame: action.payload,
+                videogame: [...state.copy, action.payload]
             }
-            
+
         case FILTER_CREAD:
             // console.log(action.payload)
             const creatorFilter = action.payload === "createdInDb"

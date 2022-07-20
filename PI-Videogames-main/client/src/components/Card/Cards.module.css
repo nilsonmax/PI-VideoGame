@@ -29,12 +29,13 @@
 .card {
     position:relative;
     margin: 10px;
-    background-color: #fff;
+    background-color: rgb(202, 66, 66);
     border-radius: 10px;
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
     overflow: hidden;
     width: 250px;
     height: 400px;
+    color:black;
   }
 
   .card:hover {
@@ -62,7 +63,7 @@
     border-radius: 50px;
     font-size: 12px;
     margin: 0;
-    color: #fff;
+    /* color: #fff; */
     padding: 2px 10px;
     text-transform: uppercase;
     cursor: pointer;

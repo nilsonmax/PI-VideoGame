@@ -27,8 +27,8 @@ export const Details = () => {
     //      console.log(' no estoy en setLoading', loading)
     // }
 
-    console.log(details.name, 'DETAILS NAME')
-    console.log(details.id, 'DETAILS ID')
+    // console.log(details.name, 'DETAILS NAME')
+    // console.log(details.id, 'DETAILS ID')
 
     return (
         <>
@@ -58,9 +58,11 @@ export const Details = () => {
                                 <div className={s.columns}>
                                     <div className={s.column}>
                                         <h3 className={s.textFirst}>Genres:</h3>
-                                        {!details.createdInDb ? details.genres.map((e, i) => <h2 key={i} className={s.contentFirst}>{e.name}</h2>)
-                                            : <h4 className={s.contentFirst}>{details.genres}</h4>
-                                        }
+                                        {/* {!details.createdInDb ? details.genres.map((e, i) => <h2 key={i} className={s.contentFirst}>{e.name}</h2>)
+                                            : details.genres.map((e, i) => <h2 key={i} className={s.contentFirst}>{e.name}</h2>)
+                                        } */}
+                                        {details && details.genres.map((e, i) => <h2 key={i} className={s.contentFirst}>{e.name}</h2>)
+                                              }
                                     </div>
 
                                     <div className={s.column}>
