@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./../asset/css/main.css";
 import CardLanding from "./CardLanding";
-import { getGenre} from "../redux/action";
+import { getGenre } from "../redux/action";
 import { useDispatch, useSelector } from 'react-redux'
 import Loading from "./Loading/Loading";
 import NotFound from "./NotFound/NotFound";
@@ -57,10 +57,10 @@ const Menu = () => {
         <div className="menu">
           <ul>
             {
-              uniqueList.map(list => {
+              uniqueList.map((list, i)=> {
                 return (
                   <>
-                    <li
+                    <li key={i}
                       onClick={() => {
                         if (list !== 'All') {
                           filterProducts(list)
@@ -82,7 +82,7 @@ const Menu = () => {
             }
           </ul>
         </div>
-        <div className="title-menu"><h2>{menuMostrar?menuMostrar:"Genre"}</h2></div>
+        <div className="title-menu"><h2>{menuMostrar ? menuMostrar : "Genre"}</h2></div>
         {Genre.length > 0 && !loading ? (
           (<CardLanding menuProducts={menuProducts} />)
         ) : !Genre.length > 0 && loading ? (

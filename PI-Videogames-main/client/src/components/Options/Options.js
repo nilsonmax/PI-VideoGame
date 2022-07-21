@@ -1,13 +1,14 @@
 import React, { useMemo } from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getFilterAsc, getFilterCreate, getFilterGenre, getFilterMaxMin, getVideoGame } from '../../redux/action';
 import { useEffect } from 'react';
 import s from './Options.module.css'
 
 // const Options = ({ set }) => {
-const Options = (genre, {set}) => {
+// const Options = (genre, {set}) => {
+const Options = (genre) => {
     const dispatch = useDispatch();
-console.log(genre, 'genre', set, 'set')
+// console.log(genre, 'genre')
     // useEffect(() => {
     //     dispatch(getVideoGame());
     // }, [dispatch]);
@@ -17,43 +18,40 @@ console.log(genre, 'genre', set, 'set')
 
        useEffect(() => {
        if (Object.entries(obj).length === 0) {
-            console.log(obj,'en genreUrl 1',set, 'set')
+            // console.log(obj,'en genreUrl 1')
             dispatch(getVideoGame());
         }else {
             // dispatch(getVideoGame());
-            console.log(obj.genre,'en genreUrl 2', set, 'set')
+            // console.log(obj.genre,'en genreUrl 2')
               // console.log(v, 'ulr 3')
             dispatch(getFilterGenre(obj.genre));
         }
     }, [dispatch, obj.genre]);
 
-    //  else {
-    //     console.log(v,'en genreUrl 2')
-    //     dispatch(getVideoGame());
-    // }
+    const genres = useSelector(state => state.genre)
 
     const handleGenre = (e) => {
         e.preventDefault()
         dispatch(getFilterGenre(e.target.value))
-        set(1)
+       // set(1)
     }
 
     const handleByAZ = (e) => {
         e.preventDefault()
         dispatch(getFilterAsc(e.target.value))
-        set(1)
+       // set(1)
     }
 
     const handleRating = (e) => {
         e.preventDefault()
         dispatch(getFilterMaxMin(e.target.value))
-        set(1)
+        //set(1)
     }
 
     const handleCreate = (e) => {
         e.preventDefault()
         dispatch(getFilterCreate(e.target.value))
-           set(1)
+          // set(1)
     }
 
     return (
@@ -63,8 +61,15 @@ console.log(genre, 'genre', set, 'set')
                 <label htmlFor="">Filter By Genre:</label>
                 <select onChange={handleGenre}>
                     <option value="All">Genre..</option>
-                    <option value="adventure">Adventure</option>
-                    <option value="action">Action</option>
+                    {/* <option value="adventure">Adventure</option>
+                    <option value="action">Action</option> */}
+                    {
+                  genres?.map(c => {
+                    return (
+                      <option  value={c.name}>{c.name}</option>
+                    )
+                  })
+                }
                 </select>
             </div>
             <div>

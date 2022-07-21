@@ -25,15 +25,15 @@ export const Videogames = () => {
     // console.log(genreUrl, 'aui2')
 
     const videogames = useSelector((state) => state.videogame)
- console.log(videogames, 'videogames')
+//  console.log(videogames, 'videogames')
     //paginacion
     const [currentPage, setCurrentPage] = useState(1)
     const [couPerPage] = useState(9)
-    const indexlast = currentPage * couPerPage; // devuelve 12
+    const indexlast = currentPage * couPerPage; // devuelve 9
     const indexFirst = indexlast - couPerPage; // 0
     const allpages = videogames.slice(indexFirst, indexlast)
    
-    console.log(indexlast, 'last', indexFirst, 'first', allpages , 'allpages')
+    // console.log(indexlast, 'last', indexFirst, 'first', allpages , 'allpages')
 
     const paginado = (pageNumber) => {
         setCurrentPage(pageNumber)
@@ -85,8 +85,7 @@ export const Videogames = () => {
         <>
             <div className={s.menuOptions}>
                 {<Search />}
-
-                {  genreUrl ? <Options genre={genreUrl} set={setCurrentPage} /> : <Options  />} 
+                {  genreUrl ? <Options genre={genreUrl} /> : <Options  />} 
                  
             </div>
             <Paginacion videogame={videogames.length}
@@ -98,7 +97,7 @@ export const Videogames = () => {
                         allpages?.map((r) => {
                             return (
                                 <Card
-                                    key={r.id + uuidv4()}
+                                    key={r.id}
                                     id={r.id}
                                     name={r.name}
                                     image={r.image}
