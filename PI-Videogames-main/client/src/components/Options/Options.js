@@ -8,38 +8,38 @@ import s from './Options.module.css'
 // const Options = (genre, {set}) => {
 const Options = (genre) => {
     const dispatch = useDispatch();
-// console.log(genre, 'genre')
+    // console.log(genre, 'genre')
     // useEffect(() => {
     //     dispatch(getVideoGame());
     // }, [dispatch]);
     const obj = useMemo(() => {
         return genre;
-      }, []);
+    }, []);
 
-       useEffect(() => {
-       if (Object.entries(obj).length === 0) {
+    useEffect(() => {
+        if (Object.entries(obj).length === 0) {
             // console.log(obj,'en genreUrl 1')
             dispatch(getVideoGame());
-        }else {
+        } else {
             // dispatch(getVideoGame());
             // console.log(obj.genre,'en genreUrl 2')
-              // console.log(v, 'ulr 3')
+            // console.log(v, 'ulr 3')
             dispatch(getFilterGenre(obj.genre));
         }
     }, [dispatch, obj.genre]);
 
-    const genres = useSelector(state => state.genre)
+    const genress = useSelector(state => state.genre)
 
     const handleGenre = (e) => {
         e.preventDefault()
         dispatch(getFilterGenre(e.target.value))
-       // set(1)
+        // set(1)
     }
 
     const handleByAZ = (e) => {
         e.preventDefault()
         dispatch(getFilterAsc(e.target.value))
-       // set(1)
+        // set(1)
     }
 
     const handleRating = (e) => {
@@ -51,12 +51,12 @@ const Options = (genre) => {
     const handleCreate = (e) => {
         e.preventDefault()
         dispatch(getFilterCreate(e.target.value))
-          // set(1)
+        // set(1)
     }
 
     return (
         <div className={s.firstContainer}>
-        <div className={s.linea}></div>
+            <div className={s.linea}></div>
             <div>
                 <label htmlFor="">Filter By Genre:</label>
                 <select onChange={handleGenre}>
@@ -64,12 +64,12 @@ const Options = (genre) => {
                     {/* <option value="adventure">Adventure</option>
                     <option value="action">Action</option> */}
                     {
-                  genres?.map(c => {
-                    return (
-                      <option  value={c.name}>{c.name}</option>
-                    )
-                  })
-                }
+                        genress?.map(c => {
+                            return (
+                                <option value={c.name}>{c.name}</option>
+                            )
+                        })
+                    }
                 </select>
             </div>
             <div>

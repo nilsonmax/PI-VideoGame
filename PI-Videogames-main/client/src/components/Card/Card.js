@@ -23,7 +23,7 @@ const Card = ({ id, name, image, rating, genres }) => {
                 <div className={s.card_footer}>
                     <div>
                        {/* {genres} <span className={s.badge}>{genres}</span> */}
-                       {genres.map(r =><span className={s.badge}>{r}</span>)}
+                       {genres.map((r, i )=>i*3 && i!=0?<div ><span className={s.badge}>{r}</span></div>:<div ><span className={s.badge2}>{r}</span></div>)}
                     </div>
                 </div>
             </div>
