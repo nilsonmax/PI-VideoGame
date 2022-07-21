@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { getGenre, postCreate } from '../../redux/action'
 import s from './Create.module.css'
-import imgFondo from '../../asset/Videogames.jpeg'
+import imgFondo from '../../asset/klipartz.com.png'
 
 const Create = () => {
 
@@ -220,8 +220,8 @@ const Create = () => {
 
             <div>
               <label className={s.SubTitle} htmlFor="">Released</label>
-              <input className={s.inputt}
-                type="text"
+              <input 
+                type="date"
                 value={input.released}
                 name="released"
                 onChange={handleChange}

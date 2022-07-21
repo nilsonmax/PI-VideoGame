@@ -28,8 +28,8 @@ export const Videogames = () => {
 //  console.log(videogames, 'videogames')
     //paginacion
     const [currentPage, setCurrentPage] = useState(1)
-    const [couPerPage] = useState(9)
-    const indexlast = currentPage * couPerPage; // devuelve 9
+    const [couPerPage] = useState(12)
+    const indexlast = currentPage * couPerPage; // devuelve 12
     const indexFirst = indexlast - couPerPage; // 0
     const allpages = videogames.slice(indexFirst, indexlast)
    
