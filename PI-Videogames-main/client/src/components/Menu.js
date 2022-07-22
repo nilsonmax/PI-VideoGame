@@ -60,7 +60,7 @@ const Menu = () => {
               uniqueList.map((list, i)=> {
                 return (
                   <>
-                    <li key={i}
+                    <li key={list}
                       onClick={() => {
                         if (list !== 'All') {
                           filterProducts(list)

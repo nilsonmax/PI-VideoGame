@@ -12,7 +12,7 @@ export const Details = () => {
     const dispatch = useDispatch()
     const details = useSelector((state) => state.detail)
 
-    console.log(details, 'DETAILS 1', id, 'id')
+    // console.log(details, 'DETAILS 1', id, 'id')
    
     useEffect(() => {
         dispatch(getIdVideoGame(id))

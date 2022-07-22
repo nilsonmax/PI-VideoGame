@@ -9,7 +9,7 @@ const CardLanding = ({ menuProducts }) => {
         {menuProducts.map((currentElem, index) => {
           return (
             <>
-              <div className="card" >
+              <div key={index} className="card" >
                 {/* <Link to={`/videogames/${id}`}> */}
                 <div className="card__content">
                   <div className="card-header">

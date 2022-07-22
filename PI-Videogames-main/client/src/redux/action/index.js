@@ -104,7 +104,7 @@ export const postCreate = (payload) => {
     return async (dispatch) => {
         try {
 
-            const json = await axios.post(
+            await axios.post(
                 "http://localhost:3001/videogames/create",
                 payload
             )

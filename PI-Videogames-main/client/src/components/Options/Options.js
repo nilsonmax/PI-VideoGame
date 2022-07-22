@@ -1,40 +1,53 @@
-import React, { useMemo } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { getFilterAsc, getFilterCreate, getFilterGenre, getFilterMaxMin, getVideoGame } from '../../redux/action';
-import { useEffect } from 'react';
+// import React, { useMemo } from 'react'
+import React from 'react'
+import { useDispatch } from 'react-redux';
+import { getFilterAsc, getFilterCreate, getFilterMaxMin} from '../../redux/action';
+// import { useEffect } from 'react';
 import s from './Options.module.css'
 
 // const Options = ({ set }) => {
 // const Options = (genre, {set}) => {
-const Options = (genre) => {
+// function useQuery() {
+//     const { search } = useLocation();
+
+//     return React.useMemo(() => new URLSearchParams(search), [search]);
+// }
+
+const Options = () => {
     const dispatch = useDispatch();
     // console.log(genre, 'genre')
     // useEffect(() => {
     //     dispatch(getVideoGame());
     // }, [dispatch]);
-    const obj = useMemo(() => {
-        return genre;
-    }, []);
+    // useEffect(() => {
+    //     dispatch(getGenre())
+    // }, [dispatch])
 
-    useEffect(() => {
-        if (Object.entries(obj).length === 0) {
-            // console.log(obj,'en genreUrl 1')
-            dispatch(getVideoGame());
-        } else {
-            // dispatch(getVideoGame());
-            // console.log(obj.genre,'en genreUrl 2')
-            // console.log(v, 'ulr 3')
-            dispatch(getFilterGenre(obj.genre));
-        }
-    }, [dispatch, obj.genre]);
+   
+        // const obj = useMemo(() => {
+        //     return genreUrl;
+        // }, []);
+    
 
-    const genress = useSelector(state => state.genre)
+    // useEffect(() => {
+    //     if (Object.entries(obj).length === 0) {
+    //         // console.log(obj,'en genreUrl 1')
+    //         dispatch(getVideoGame());
+    //     } else {
+    //         // dispatch(getVideoGame());
+    //         console.log(obj.genreUrl, 'en genreUrl 2')
+    //         // console.log(v, 'ulr 3')
+    //         dispatch(getFilterGenre(obj.genreUrl));
+    //     }
+    // }, [dispatch, obj.genreUrl]);
 
-    const handleGenre = (e) => {
-        e.preventDefault()
-        dispatch(getFilterGenre(e.target.value))
-        // set(1)
-    }
+    // const genress = useSelector(state => state.genre)
+
+    // const handleGenre = (e) => {
+    //     e.preventDefault()
+    //     dispatch(getFilterGenre(e.target.value))
+    //     // set(1)
+    // }
 
     const handleByAZ = (e) => {
         e.preventDefault()
@@ -57,21 +70,21 @@ const Options = (genre) => {
     return (
         <div className={s.firstContainer}>
             <div className={s.linea}></div>
-            <div>
+            {/* <div>
                 <label htmlFor="">Filter By Genre:</label>
                 <select onChange={handleGenre}>
                     <option value="All">Genre..</option>
                     {/* <option value="adventure">Adventure</option>
-                    <option value="action">Action</option> */}
+                    <option value="action">Action</option> 
                     {
-                        genress?.map(c => {
+                        genress?.map((c) => {
                             return (
-                                <option value={c.name}>{c.name}</option>
+                                <option key={c.id} value={c.name}>{c.name}</option>
                             )
                         })
                     }
                 </select>
-            </div>
+            </div> */}
             <div>
                 <label htmlFor="">Filter By A-Z:</label>
                 <select onChange={handleByAZ}>

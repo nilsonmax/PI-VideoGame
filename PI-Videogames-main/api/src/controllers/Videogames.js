@@ -6,7 +6,7 @@ const { getDataApiGenre } = require('./Genre');
 
 const { API_KEY } = process.env;
 
-let numData = 30; // let numPage = 1;
+let numData = 100; // let numPage = 1;
 
 const getDataApi = async (page = 1, dataRes = []) => {
 
