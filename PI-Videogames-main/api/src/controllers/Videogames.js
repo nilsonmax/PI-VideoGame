@@ -6,14 +6,15 @@ const { getDataApiGenre } = require('./Genre');
 
 const { API_KEY } = process.env;
 
-let numData = 100; // let numPage = 1;
+let numData = 100;
+// let numPage = 1;
 
 const getDataApi = async (page = 1, dataRes = []) => {
 
     let resp = await axios.get(
-        `https://api.rawg.io/api/games?key=${API_KEY}`
+        `https://api.rawg.io/api/games?key=${API_KEY}&page=${page}`
     );
-
+// console.log(resp, 'resp')
     dataRes = [...dataRes, ...resp.data.results.map((r) => { // const dataRes = data1.data.results.map((r) => {
         return {
             id: r.id,
@@ -33,9 +34,10 @@ const getDataApi = async (page = 1, dataRes = []) => {
         }
     }
     )];
-
-    if (dataRes.length >= numData) {    // if (page >= numage) {
-
+    
+// console.log(dataRes.length, 'dataRes.length 1 ', numData)
+    if (dataRes.length === numData) {    // if (page >= numage) {
+// console.log(dataRes.length, 'dataRes.length 2', numData)
         const data = dataRes.slice(0, numData).map(item => item);
         return data;  // return dataRes;
     }
