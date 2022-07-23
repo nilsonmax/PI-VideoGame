@@ -14,7 +14,7 @@ const getDataApi = async (page = 1, dataRes = []) => {
     let resp = await axios.get(
         `https://api.rawg.io/api/games?key=${API_KEY}&page=${page}`
     );
-// console.log(resp, 'resp')
+    // console.log(resp, 'resp')
     dataRes = [...dataRes, ...resp.data.results.map((r) => { // const dataRes = data1.data.results.map((r) => {
         return {
             id: r.id,
@@ -34,10 +34,10 @@ const getDataApi = async (page = 1, dataRes = []) => {
         }
     }
     )];
-    
-// console.log(dataRes.length, 'dataRes.length 1 ', numData)
+
+    // console.log(dataRes.length, 'dataRes.length 1 ', numData)
     if (dataRes.length === numData) {    // if (page >= numage) {
-// console.log(dataRes.length, 'dataRes.length 2', numData)
+        // console.log(dataRes.length, 'dataRes.length 2', numData)
         const data = dataRes.slice(0, numData).map(item => item);
         return data;  // return dataRes;
     }
@@ -119,6 +119,19 @@ const dataResDB = async (name) => {
     })
 
     return dataResDb;
+}
+
+const deleteVideogame = (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const datadelete = Videogame.destroy({
+            where: { id }
+        })
+        res.send({ msg: `se elimino el videojuefo con ID ${datadelete}` })
+    } catch (error) {
+        res.status(404).send(error)
+    }
 }
 
 const dataResAPI = async (name) => {
@@ -228,7 +241,8 @@ const postCreate = async (req, res) => {
 module.exports = {
     getAll,
     getId,
-    postCreate
+    postCreate,
+    deleteVideogame
 }
 
 // {

@@ -30,8 +30,13 @@ const Create = () => {
     } else if (input.released === "") {
       errors.released = "required field"
 
-      // } else if (input.genres.length === 0) {
-      //   errors.genres = "it has to be a different genres"
+    } else if (!input.genres.length) {
+     
+      errors.genres = "required field genres"
+
+    } else if (!input.platforms.length) {
+      
+      errors.platforms = "required field platforms"
 
     } else if (!input.rating) {
       errors.rating = "required field"
@@ -40,7 +45,8 @@ const Create = () => {
       errors.image = 'Please insert an image type URL https'
 
     }
-    // else if (input.platforms === "") {
+    // else if (input.platforms) {
+    //   console.log(input.platforms, 'input.platforms')
     //   errors.platforms = "required field"
     // }
     return errors
@@ -220,7 +226,7 @@ const Create = () => {
 
             <div>
               <label className={s.SubTitle} htmlFor="">Released</label>
-              <input 
+              <input
                 type="date"
                 value={input.released}
                 name="released"
@@ -274,6 +280,7 @@ const Create = () => {
                       <option key={index} value={c}>{c}</option>
                     )
                   })
+                  
                 }
               </select>
 
@@ -282,6 +289,7 @@ const Create = () => {
                   <p className={s.error}>{errors.platforms}</p>
                 )
               }
+              {/* {console.log(input.platforms, 'input.platforms')} */}
             </div>
 
             <div>
@@ -327,6 +335,7 @@ const Create = () => {
               ))
 
             }
+            {/* { console.log(input.genres, 'input.genre')} */}
           </div>
         </div>
       </div>

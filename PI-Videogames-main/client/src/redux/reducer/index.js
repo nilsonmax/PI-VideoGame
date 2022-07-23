@@ -7,7 +7,8 @@ import {
     FILTER_ASC,
     FILTER_MIN,
     FILTER_CREAD,
-    POST_CREATE
+    POST_CREATE,
+    DATA_CLEAR
 } from '../action/index.js'
 
 const initialState = {
@@ -28,11 +29,18 @@ const reducer = (state = initialState, action) => {
 
         case GET_DETAILS_VIDEOGAMES:
             console.log(action.payload, ' id payload')
+
             return {
                 ...state,
                 detail: action.payload
             }
 
+        case DATA_CLEAR:
+            return {
+                ...state,
+                detail: {}
+            }
+            
         case GET_BY_NAME_VIDEOGAMES:
             return {
                 ...state,

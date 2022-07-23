@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {  useParams } from 'react-router-dom'
-import { getIdVideoGame } from '../../redux/action';
+import { getDataClear, getIdVideoGame } from '../../redux/action';
 import s from '../Details/Details.module.css'
 import { useEffect } from 'react';
 import { useState } from 'react';
@@ -16,8 +16,9 @@ export const Details = () => {
    
     useEffect(() => {
         dispatch(getIdVideoGame(id))
+        dispatch(getDataClear())
     }, [dispatch, id])
-
+ 
     let [loading, setLoading] = useState(true)
 
     if (typeof details.name !== 'undefined' && loading) {

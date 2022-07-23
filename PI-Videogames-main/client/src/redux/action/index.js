@@ -9,6 +9,8 @@ export const FILTER_ASC = "FILTER_ASC";
 export const FILTER_MIN = "FILTER_MIN";
 export const FILTER_CREAD = "FILTER_CREAD";
 export const POST_CREATE = "POST_CREATE";
+export const DATA_CLEAR = "DATA_CLEAR";
+
 
 export const getVideoGame = () => {
     return async (dispatch) => {
@@ -120,4 +122,11 @@ export const postCreate = (payload) => {
         }
     }
 
+}
+
+export const getDataClear = (payload) => {
+    return {
+        type: DATA_CLEAR,
+        payload
+    }
 }
