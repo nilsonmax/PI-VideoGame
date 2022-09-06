@@ -25,7 +25,7 @@ Una aplicación en la cual se podra ver distintos generos de videojuegos junto c
 
 - React Js
 - Redux 
-- LESS
+- CSS
 
 ## Backend
 
