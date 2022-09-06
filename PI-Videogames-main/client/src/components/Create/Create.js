@@ -36,7 +36,7 @@ const Create = () => {
 
     } else if (!input.platforms.length) {
       
-      errors.platforms = "required field platforms"
+      errors.platforms = "required field platforms" 
 
     } else if (!input.rating) {
       errors.rating = "required field"
