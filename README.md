@@ -12,7 +12,7 @@
 - Aprender y practicar el workflow de GIT.
 - Usar y practicar testing.
 
-## ¿Qué es Kira&Max?
+## ¿Qué es PJM?
 
 Una aplicación en la cual se podra ver distintos generos de videojuegos junto con información relevante de las mismas utilizando la api externa [the videogame api](https://rawg.io/apidocs) y a partir de ella poder, entre otras cosas:
 
